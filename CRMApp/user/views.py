@@ -10,7 +10,7 @@ def userRegister(request):
     if request.method == 'POST':
         if form.is_valid():
             form.save()
-            return redirect('login')
+            return redirect('index')
         
     context = {
         'form' : form
@@ -28,8 +28,8 @@ def userLogin(request):
             login(request, user)
             return redirect('musteriler')
         else:
-            return redirect('login')
-    return render(request, 'login.html')
+            return redirect('index')
+    return render(request, 'index.html')
         
 def userLogout(request):
     logout(request)

@@ -16,9 +16,10 @@
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
             <img src="{% static 'CRM.jpeg' %}" alt="" class="w-25 h-25">
-          <form class="d-flex" role="search">
+          <form class="d-flex" method="POST" role="search">
+            {% csrf_token %}
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <button class="btn btn-outline-success" type="submit">Çıkış Yap</button>
           </form>
         </div>
       </nav>
