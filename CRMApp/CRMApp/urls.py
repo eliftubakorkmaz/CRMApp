@@ -24,8 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', userLogin, name='login'),
     path('register/', userRegister, name='register'),
-    path('musteriler/', musteriler, name='musteriler'),
+    path('musteriler/', musteriler_listesi, name='musteriler'),
     path('logout/', userLogout, name='logout'),
     path('create/', add_customer, name='create'),
-    path('', index, name='index')
+    path('', index, name='index'),
 ]

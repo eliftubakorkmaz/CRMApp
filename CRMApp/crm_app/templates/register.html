@@ -25,9 +25,10 @@
     </nav>
     <!-- Kayıt olma formu -->
     <div class="container-fluid mt-5"></div>
+        <h3 class="text-center mb-4">Kayıt Olmak İçin Doldurunuz</h3>
         <div class="row justify-content-center align-items-center">
-            <div class="col-md-6 border border-4 border-white rounded-4 py-3">
-                <form action="" method="POST" class="border p-5 bg-body-secondary w-100 kayit">
+            <div class="col-md-6 border border-4 border-success rounded-4 py-3 w-25">
+                <form action="" method="POST" class="border p-5 bg-body-secondary w-75 ms-5">
                         {% csrf_token %}
                     {{ form }}
                     <div class="mt-3">

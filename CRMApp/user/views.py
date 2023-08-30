@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import *
 from django.contrib.auth import authenticate, login, logout
 from .forms import CustomerForm
@@ -44,7 +44,7 @@ def add_customer(request):
         form = CustomerForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('musteri')
+            return redirect('musteriler')
         
     context = {
         'form' : form
@@ -52,6 +52,6 @@ def add_customer(request):
     
     return render(request, 'create.html', context)
 
-def customer_list(request):
-    customers = Musteri.objects.all()
-    return render(request, 'musteri.html', {'customers': customers})
+def musteriler_listesi(request):
+    musteriler = Musteri.objects.all()
+    return render(request, 'musteriler.html', {'musteriler': musteriler})
