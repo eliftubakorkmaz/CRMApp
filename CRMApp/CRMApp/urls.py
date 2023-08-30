@@ -19,6 +19,7 @@ from django.urls import path
 from crm_app.views import *
 from django.conf import settings
 from user.views import *
+from user.views import musteriler_listesi, add_customer, musteri_sil, musteri_duzenle
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,4 +29,6 @@ urlpatterns = [
     path('logout/', userLogout, name='logout'),
     path('create/', add_customer, name='create'),
     path('', index, name='index'),
+    path('musteri/<int:musteri_id>/sil/', musteri_sil, name='musteri_sil'),
+    path('musteri/<int:musteri_id>/duzenle/', musteri_duzenle, name='musteri_duzenle'),
 ]

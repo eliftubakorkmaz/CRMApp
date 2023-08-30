@@ -11,59 +11,67 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">CRM</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Müşteriler</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"></a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <button class="btn btn-outline-warning me-4">
-        {{request.user}}
-        </button>
-        <a href="{% url 'create' %}" class="btn btn-outline-warning me-4 text-decoration-none">
-          <span class="d-inline-block">Müşteri Ekle</span>
-        </a>
-        <a href="{% url 'logout' %}" class="btn btn-outline-warning me-4 text-decoration-none">
-          <span class="d-inline-block">Çıkış Yap</span>
-        </a>
-      </form>
-    </div>
-  </div>
-</nav>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">CRM</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Müşteriler</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"></a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <button class="btn btn-outline-warning me-2" type="button">
+                        {{ request.user }}
+                    </button>
+                    <a href="{% url 'create' %}" class="btn btn-outline-warning me-2 text-decoration-none">
+                        <span class="d-inline-block">Müşteri Ekle</span>
+                    </a>
+                    <a href="{% url 'logout' %}" class="btn btn-outline-warning me-2 text-decoration-none">
+                        <span class="d-inline-block">Çıkış Yap</span>
+                    </a>
+                </form>
+            </div>
+        </div>
+    </nav>
 <!-- Müşteri table-->
-<table class="table table-success table-striped mt-2">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Ad</th>
-      <th scope="col">Soyad</th>
-      <th scope="col">Telefon Numarası</th>
-      <th scope="col">Mail Adresi</th>
-      <th scope="col">Not</th>
-      <th scope="col">İşlemler</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for musteri in musteriler %}
-    <tr>
-      <th scope="row">{{ forloop.counter }}</th>
-      <td>{{ musteri.isim }}</td>
-      <td>{{ musteri.soyisim }}</td>
-      <td>{{ musteri.telefon }}</td>
-      <td>{{ musteri.email }}</td>
-      <td>{{ musteri.note }}</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+<div class="container mt-4">
+        <div class="table-responsive">
+            <table class="table table-success table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Ad</th>
+                        <th scope="col">Soyad</th>
+                        <th scope="col">Telefon Numarası</th>
+                        <th scope="col">Mail Adresi</th>
+                        <th scope="col">Not</th>
+                        <th scope="col">İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for musteri in musteriler %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ musteri.isim }}</td>
+                        <td>{{ musteri.soyisim }}</td>
+                        <td>{{ musteri.telefon }}</td>
+                        <td>{{ musteri.email }}</td>
+                        <td>{{ musteri.note }}</td>
+                        <td>
+                            <a href="{% url 'musteri_sil' musteri.id %}" class="btn btn-warning btn-sm me-1">Sil</a>
+                            <a href="{% url 'musteri_duzenle' musteri.id %}" class="btn btn-warning btn-sm">Düzenle</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
-</html>

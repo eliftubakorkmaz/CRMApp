@@ -4,14 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Müşteri Sil</title>
+
+     <!-- Bootstrap CDN -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
 </head>
-<body>
-    <h2>Müşteri Silme Onay</h2>
-  <p>Emin misiniz? {{ musteri.isim }} {{ musteri.soyisim }} adlı müşteriyi silmek istediğinizden emin misiniz?</p>
-  <form method="post">
-    {% csrf_token %}
-    <button type="submit">Evet, Sil</button>
-    <a href="{% url 'musteri-listesi' %}">İptal</a>
-  </form>
+<body class="bg-light">
+    <div class="container py-5 text-center">
+        <div class="border border-4 border-warning-subtle p-4 mx-auto bg-white w-75">
+            <h4>Müşteri Silme Onay</h4>
+            <p>{{ musteri.isim }} {{ musteri.soyisim }} adlı müşteriyi silmek istediğinizden emin misiniz?</p>
+            <form method="post">
+                {% csrf_token %}
+                <div class="d-grid gap-2 mt-3">
+                    <button type="submit" class="btn btn-warning">Evet, Sil</button>
+                    <a href="{% url 'musteriler' %}" class="btn btn-outline-warning">İptal</a>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

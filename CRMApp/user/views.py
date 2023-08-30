@@ -4,6 +4,12 @@ from django.contrib.auth import authenticate, login, logout
 from .forms import CustomerForm
 from .models import Musteri
 
+def index(request):
+    return render(request, 'index.html')
+
+def register(request):
+    return render(request, 'register.html')
+
 def musteriler(request):
     return render(request, 'musteriler.html')
 
@@ -55,3 +61,20 @@ def add_customer(request):
 def musteriler_listesi(request):
     musteriler = Musteri.objects.all()
     return render(request, 'musteriler.html', {'musteriler': musteriler})
+
+def musteri_sil(request, musteri_id):
+    musteri = get_object_or_404(Musteri, id=musteri_id)
+    if request.method == 'POST':
+        musteri.delete()
+        return redirect('musteriler')
+    return render(request, 'musteri_sil.html', {'musteri': musteri})
+
+def musteri_duzenle(request, musteri_id):
+    musteri = get_object_or_404(Musteri, id=musteri_id)
+    form = CustomerForm(instance=musteri)
+    if request.method == 'POST':
+        form = CustomerForm(request.POST, instance=musteri)
+        if form.is_valid():
+            form.save()
+            return redirect('musteriler')
+    return render(request, 'musteri_duzenle.html', {'form': form})
