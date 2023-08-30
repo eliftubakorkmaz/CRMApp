@@ -17,8 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from crm_app.views import *
+from django.conf import settings
+from user.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name='index')
+    path('', index, name='index'),
+    path('register/', userRegister, name='register'),
+    path('login/', userLogin, name='login'),
+    path('musteriler/', musteriler, name='musteriler')
 ]
