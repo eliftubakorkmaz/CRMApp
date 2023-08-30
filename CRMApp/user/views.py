@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from .forms import *
 from django.contrib.auth import authenticate, login, logout
+from .forms import CustomerForm
+from .models import Musteri
 
 def musteriler(request):
     return render(request, 'musteriler.html')
@@ -29,8 +31,27 @@ def userLogin(request):
             return redirect('musteriler')
         else:
             return redirect('index')
+        
     return render(request, 'index.html')
         
 def userLogout(request):
     logout(request)
     return redirect('index')
+
+def add_customer(request):
+    form = CustomerForm()
+    if request.method == 'POST':
+        form = CustomerForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('musteri')
+        
+    context = {
+        'form' : form
+    }
+    
+    return render(request, 'create.html', context)
+
+def customer_list(request):
+    customers = Musteri.objects.all()
+    return render(request, 'musteri.html', {'customers': customers})

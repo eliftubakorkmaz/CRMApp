@@ -5,3 +5,6 @@ def index(request):
 
 def musteriler(request):
     return render(request, 'musteriler.html')
+
+def register(request):
+    return render(request, 'register.html')

@@ -25,5 +25,7 @@ urlpatterns = [
     path('', userLogin, name='login'),
     path('register/', userRegister, name='register'),
     path('musteriler/', musteriler, name='musteriler'),
-    path('logout/', userLogout, name='logout')
+    path('logout/', userLogout, name='logout'),
+    path('create/', add_customer, name='create'),
+    path('index', index, name='index')
 ]

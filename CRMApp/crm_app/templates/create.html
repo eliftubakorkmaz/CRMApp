@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create</title>
+</head>
+<body>
+    <h1>Müşteri Ekle</h1>
+    <form method="post" class="w-50 m-auto border mt-4 p-3 text-light">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" value="Oluştur" class="btn btn-danger mt-3">Oluştur</button>
+    </form>
+</body>
+</html>
