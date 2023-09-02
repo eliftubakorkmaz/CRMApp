@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import *
 from django.contrib.auth import authenticate, login, logout
 from .forms import CustomerForm
-from .models import Musteri
+from .models import Musteri, Fırsat
+from .forms import FırsatForm 
+
 
 def index(request):
     return render(request, 'index.html')
@@ -78,3 +80,26 @@ def musteri_duzenle(request, musteri_id):
             form.save()
             return redirect('musteriler')
     return render(request, 'musteri_duzenle.html', {'form': form})
+
+def person_list(request):
+    people = Person.objects.all()
+    return render(request, 'person_list.html', {'people': people})
+
+def fırsat_list(request):
+    opportunities = Fırsat.objects.all()
+    return render(request, 'fırsat_list.html', {'opportunities': opportunities})
+
+def fırsat_list(request):
+    opportunities = Fırsat.objects.all()
+    return render(request, 'fırsat_list.html', {'opportunities': opportunities})
+
+def fırsatekle(request):
+    if request.method == 'POST':
+        form = FırsatForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('fırsat_list')
+    else:
+        form = FırsatForm()
+
+    return render(request, 'fırsatekle.html', {'form': form})

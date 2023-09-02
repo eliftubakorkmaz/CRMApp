@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fırsat Ekle</title>
+     <!-- Bootstrap CDN -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body class="bg-success-subtle">
+     <h3 class="text-center mt-5 mb-5">Fırsat Ekle</h3>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form method="post" class="border mt-4 p-3 text-dark border border-white border-3">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" value="Oluştur" class="btn btn-outline-success mt-3">Oluştur</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

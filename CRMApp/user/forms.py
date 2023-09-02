@@ -31,3 +31,8 @@ class CustomerForm(ModelForm):
 
 class Customer(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
+
+class FırsatForm(ModelForm):
+    class Meta:
+        model = Fırsat
+        fields = ['anlasma', 'asama', 'kapanis', 'durum']
