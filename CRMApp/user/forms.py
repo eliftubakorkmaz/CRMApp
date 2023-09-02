@@ -35,4 +35,4 @@ class Customer(models.Model):
 class FırsatForm(ModelForm):
     class Meta:
         model = Fırsat
-        fields = ['anlasma', 'asama', 'kapanis', 'durum']
+        fields = ['musteri','anlasma', 'asama', 'kapanis', 'durum']

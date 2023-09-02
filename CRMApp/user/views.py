@@ -15,6 +15,9 @@ def register(request):
 def musteriler(request):
     return render(request, 'musteriler.html')
 
+def musteriler(request):
+    return render(request, 'musteriler.html')
+
 def userRegister(request):
     form = UserForm(request.POST)
     if request.method == 'POST':
@@ -81,25 +84,19 @@ def musteri_duzenle(request, musteri_id):
             return redirect('musteriler')
     return render(request, 'musteri_duzenle.html', {'form': form})
 
-def person_list(request):
-    people = Person.objects.all()
-    return render(request, 'person_list.html', {'people': people})
-
-def fırsat_list(request):
-    opportunities = Fırsat.objects.all()
-    return render(request, 'fırsat_list.html', {'opportunities': opportunities})
-
-def fırsat_list(request):
-    opportunities = Fırsat.objects.all()
-    return render(request, 'fırsat_list.html', {'opportunities': opportunities})
-
 def fırsatekle(request):
+    form = FırsatForm()
     if request.method == 'POST':
         form = FırsatForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('fırsat_list')
-    else:
-        form = FırsatForm()
+            return redirect('musteriler')
+    context = {
+        'form' : FırsatForm()
+    }
 
-    return render(request, 'fırsatekle.html', {'form': form})
+    return render(request, 'fırsatekle.html', context)
+
+def fırsat_list(request):
+    fırsatlar = Fırsat.objects.all()
+    return render(request, 'fırsatlar.html', {'fırsatlar': fırsatlar})

@@ -3,4 +3,3 @@ from .models import *
 
 admin.site.register(Musteri)
 admin.site.register(Fırsat)
-admin.site.register(Person)

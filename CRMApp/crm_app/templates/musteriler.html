@@ -22,6 +22,9 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Müşteriler</a>
                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'fırsatlar' %}">Fırsatlar</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"></a>
                     </li>
@@ -67,37 +70,6 @@
                         <td>{{ musteri.telefon }}</td>
                         <td>{{ musteri.email }}</td>
                         <td>{{ musteri.note }}</td>
-                        <td>
-                            <a href="{% url 'musteri_sil' musteri.id %}" class="btn btn-warning btn-sm me-1">Sil</a>
-                            <a href="{% url 'musteri_duzenle' musteri.id %}" class="btn btn-warning btn-sm">Düzenle</a>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        <div class="table-responsive mt-5">
-            <table class="table table-success table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Müşteri</th>
-                        <th scope="col">Anlasma</th>
-                        <th scope="col">Asama</th>
-                        <th scope="col">Kapanis</th>
-                        <th scope="col">Durum</th>
-                        <th scope="col">İşlemler</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for musteri in musteriler %}
-                    <tr>
-                        <th scope="row">{{ forloop.counter }}</th>
-                        <td>{{ fırsat.musteri }}</td>
-                        <td>{{ fırsat.anlasma }}</td>
-                        <td>{{ fırsat.asama }}</td>
-                        <td>{{ fırsat.kapanis }}</td>
-                        <td>{{ fırsat.durum }}</td>
                         <td>
                             <a href="{% url 'musteri_sil' musteri.id %}" class="btn btn-warning btn-sm me-1">Sil</a>
                             <a href="{% url 'musteri_duzenle' musteri.id %}" class="btn btn-warning btn-sm">Düzenle</a>
